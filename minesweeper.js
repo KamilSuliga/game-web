@@ -3,9 +3,9 @@ var rows = 8;
 var columns = 8;
 
 var minesCount = 10;
-var minesLocation = []; // "2-2", "3-4", "2-1"
+var minesLocation = [];
 
-var tilesClicked = 0; //goal to click all tiles except the ones containing mines
+var tilesClicked = 0;
 var flagEnabled = false;
 
 var gameOver = false;
@@ -15,11 +15,6 @@ window.onload = function() {
 }
 
 function setMines() {
-    // minesLocation.push("2-2");
-    // minesLocation.push("2-3");
-    // minesLocation.push("5-6");
-    // minesLocation.push("3-4");
-    // minesLocation.push("1-1");
 
     let minesLeft = minesCount;
     while (minesLeft > 0) { 
@@ -40,11 +35,10 @@ function startGame() {
     document.getElementById("flag-button").addEventListener("click", setFlag);
     setMines();
 
-    //populate our board
+
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c = 0; c < columns; c++) {
-            //<div id="0-0"></div>
             let tile = document.createElement("div");
             tile.id = r.toString() + "-" + c.toString();
             tile.addEventListener("click", clickTile);
@@ -85,14 +79,13 @@ function clickTile() {
     }
 
     if (minesLocation.includes(tile.id)) {
-        // alert("GAME OVER");
         gameOver = true;
         revealMines();
         return;
     }
 
 
-    let coords = tile.id.split("-"); // "0-0" -> ["0", "0"]
+    let coords = tile.id.split("-");
     let r = parseInt(coords[0]);
     let c = parseInt(coords[1]);
     checkMine(r, c);
@@ -123,39 +116,35 @@ function checkMine(r, c) {
     tilesClicked += 1;
 
     let minesFound = 0;
+    minesFound += checkTile(r-1, c-1);
+    minesFound += checkTile(r-1, c);
+    minesFound += checkTile(r-1, c+1);
 
-    //top 3
-    minesFound += checkTile(r-1, c-1);      //top left
-    minesFound += checkTile(r-1, c);        //top 
-    minesFound += checkTile(r-1, c+1);      //top right
+    minesFound += checkTile(r, c-1);
+    minesFound += checkTile(r, c+1);
 
-    //left and right
-    minesFound += checkTile(r, c-1);        //left
-    minesFound += checkTile(r, c+1);        //right
-
-    //bottom 3
-    minesFound += checkTile(r+1, c-1);      //bottom left
-    minesFound += checkTile(r+1, c);        //bottom 
-    minesFound += checkTile(r+1, c+1);      //bottom right
+    minesFound += checkTile(r+1, c-1);
+    minesFound += checkTile(r+1, c);
+    minesFound += checkTile(r+1, c+1);
 
     if (minesFound > 0) {
         board[r][c].innerText = minesFound;
         board[r][c].classList.add("x" + minesFound.toString());
     }
     else {
-        //top 3
-        checkMine(r-1, c-1);    //top left
-        checkMine(r-1, c);      //top
-        checkMine(r-1, c+1);    //top right
 
-        //left and right
-        checkMine(r, c-1);      //left
-        checkMine(r, c+1);      //right
+        checkMine(r-1, c-1);
+        checkMine(r-1, c);
+        checkMine(r-1, c+1);
 
-        //bottom 3
-        checkMine(r+1, c-1);    //bottom left
-        checkMine(r+1, c);      //bottom
-        checkMine(r+1, c+1);    //bottom right
+
+        checkMine(r, c-1);
+        checkMine(r, c+1);
+
+
+        checkMine(r+1, c-1);
+        checkMine(r+1, c);
+        checkMine(r+1, c+1);
     }
 
     if (tilesClicked == rows * columns - minesCount) {
