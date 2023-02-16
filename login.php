@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 <html>
     <head>
         <meta charset="utf-8">  
-        <title>Super strona</title>
+        <title>GameLand</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -48,14 +48,14 @@ if (isset($_POST['submit'])) {
         <div id="header">
             <div id="menu">
             <div class="button"><br><a href="login.php">Zaloguj się</a></div>
-            <div class="button"><br><a href="signup.php">zarejestruj się</a></div>
+            <div class="button"><br><a href="signup.php">Zarejestruj się</a></div>
 </div>
         </div>
         <div id="main">
             <form action="" method="post">
             <h1>Witaj w GAMELAND </h1><br>
-             <input type="text" name="username" placeholder="Username..."><br>
-             <input type="password" name="password" placeholder="hasło..."><br>
+             <input type="text" name="username" placeholder="username..."><br>
+             <input type="password" name="password" placeholder="password..."><br>
              <button type="submit" name="submit">Zaloguj się</button>
             </form>
         </div>
