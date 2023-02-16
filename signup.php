@@ -5,7 +5,7 @@ session_start();
 <html>
     <head>
         <meta charset="utf-8">  
-        <title>Super strona</title>
+        <title>GameLand</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -13,7 +13,7 @@ session_start();
         <div id="header">
             <div id="menu">
             <div class="button"><br><a href="login.php">Zaloguj się</a></div>
-            <div class="button"><br><a href="signup.php">zarejestruj się</a></div>
+            <div class="button"><br><a href="signup.php">Zarejestruj się</a></div>
 </div>
         </div>
         <div id="main">
@@ -21,12 +21,12 @@ session_start();
                 
             <form action="includes/signup.inc.php" method="post"><br>
             <h1>Załóż konto </h1><br>
-                <input type="text" name="name" placeholder="Imię..."><br>
-                <input type="text" name="LastName" placeholder="Nazwisko..."><br>
-                <input type="text" name="UserName" placeholder="UserName..."><br>
-                <input type="text" name="email" placeholder="Email"><br>
-                <input type="password" name="password" placeholder="hasło"><br>
-                <input type="password" name="RepeatPwd" placeholder="Powtórz hasło"><br>
+                <input type="text" name="name" placeholder="name..."><br>
+                <input type="text" name="LastName" placeholder="last name..."><br>
+                <input type="text" name="UserName" placeholder="username..."><br>
+                <input type="text" name="email" placeholder="email"><br>
+                <input type="password" name="password" placeholder="password"><br>
+                <input type="password" name="RepeatPwd" placeholder="repeat password"><br>
                 <button type="submit" name="submit" id="przycisk">zarejestruj się</button>
             </form>
 </div>
